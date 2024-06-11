@@ -41,7 +41,7 @@ Image files for updated versions of `R` should be within a new named branch. Upd
 
 ```bash
 BRANCH=4.4.0
-TAG=1.0
+TAG=$BRANCH_1.0
 
 # create a new branch ...
 git checkout -b $BRANCH
