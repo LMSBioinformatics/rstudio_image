@@ -37,7 +37,7 @@ singularity pull docker://lmsbio/rstudio:$BRANCH
 
 ## Updating
 
-Image files for updated versions of `R` should be within a new named branch. Updates to existing versions should be tagged appropriately.
+Image files for updated versions of `R` should be within a new named branch. Updates should be tagged appropriately.
 
 ```bash
 BRANCH=4.4.0
