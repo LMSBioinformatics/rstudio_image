@@ -2,9 +2,9 @@
 
 Versioned `Dockerfile` for the `RStudio` image used at the MRC LMS, building extra compilation compatibility into [`rocker/rstudio`](https://hub.docker.com/r/rocker/rstudio):
 
-- maths headers: `libfftw3-dev`, `libgsl-dev`, `libglpk40-dev`, `libglpk-dev`
-- compression headers: `liblzma-dev`, `libbz2-dev`, `libdeflate-dev`
-- compatibility headers: `build-essential`, `libhdf5-dev`, `libpng-dev`, `libboost-all-dev`, `libxml2-dev`
+- maths: `fftw3`, `gsl`, `glpk40`, `glpk`
+- compression: `lzma`, `bz2`, `deflate`, `zlib`, `zstd`  
+- compatibility: `hdf5`, `xml2`, `mysqlclient`
 
 The image is also built to include two generic dependencies of `RStudio`:
 
