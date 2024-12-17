@@ -70,7 +70,7 @@ RUN apt-get install -y --no-install-recommends\
   libmariadb-dev-compat \
   libmodule-build-perl \
   libmpfr-dev \
-  libmysqlclient-dev
+  libmysqlclient-dev \
   libncurses-dev \
   libnetcdf-dev \
   libopenbabel-dev \
