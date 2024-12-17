@@ -1,17 +1,14 @@
-ARG BASE_IMAGE=rocker/rstudio
-ARG BASE_VERSION=4.4.0
-
-FROM ${BASE_IMAGE}:${BASE_VERSION}
+FROM rocker/rstudio:4.4.0
 
 LABEL \
-  name="lmsbio/rstudio" \
-  version=${BASE_VERSION} \
+  name=lmsbio/rstudio \
+  version=4.4.0 \
   url="https://github.com/LMSBioinformatics/rstudio_image" \
   maintainer="bioinformatics@lms.mrc.ac.uk"
 
 RUN apt-get update -y
 
-RUN apt-get install -y --no-install-recommends\
+RUN apt-get install -y --no-install-recommends \
   automake \
   biber \
   build-essential \
@@ -22,7 +19,6 @@ RUN apt-get install -y --no-install-recommends\
   coinor-libsymphony-doc \
   curl \
   default-jdk \
-  default-libmysqlclient-dev \
   fortran77-compiler \
   gdb \
   ggobi \
@@ -37,7 +33,7 @@ RUN apt-get install -y --no-install-recommends\
   libbz2-dev \
   libcairo2-dev \
   libcgi-pm-perl \
-  libcurl4-openssl-dev \
+  libcurl4-gnutls-dev \
   libdeflate-dev \
   libdbd-mysql-perl \
   libdbi-perl \
@@ -45,7 +41,6 @@ RUN apt-get install -y --no-install-recommends\
   libfftw3-dev \
   libfile-copy-recursive-perl \
   libfuse-dev \
-  libgdal-dev \
   libgeos-dev \
   libgit2-dev \
   libgl1-mesa-dev \
@@ -70,7 +65,6 @@ RUN apt-get install -y --no-install-recommends\
   libmariadb-dev-compat \
   libmodule-build-perl \
   libmpfr-dev \
-  libmysqlclient-dev \
   libncurses-dev \
   libnetcdf-dev \
   libopenbabel-dev \
@@ -118,7 +112,13 @@ RUN apt-get install -y --no-install-recommends\
   xfonts-75dpi \
   zlib1g-dev
 
+# separated install so that MariaDB & MySQL don't conflict
+RUN apt-get install -y --no-install-recommends \
+  default-libmysqlclient-dev \
+  libgdal-dev \
+  libmysqlclient-dev
+
 RUN apt-get clean && apt-get autoremove -y && apt-get autoclean -y && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install scikit-learn pandas pyyaml --break-system-packages
-RUN R --no-echo --no-restore --no-save -e "install.packages(c('renv', 'rmarkdown', 'devtools'))"
+RUN pip3 install scikit-learn pandas pyyaml
+RUN R --no-echo --no-restore --no-save -e "install.packages(c('devtools', 'renv', 'rmarkdown', 'tidyverse'))"
