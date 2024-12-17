@@ -120,5 +120,5 @@ RUN apt-get install -y --no-install-recommends \
 
 RUN apt-get clean && apt-get autoremove -y && apt-get autoclean -y && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install scikit-learn pandas pyyaml
+RUN pip3 install --break-system-packages scikit-learn pandas pyyaml
 RUN R --no-echo --no-restore --no-save -e "install.packages(c('devtools', 'renv', 'rmarkdown', 'tidyverse'))"
