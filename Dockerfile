@@ -1,8 +1,8 @@
-FROM rocker/rstudio:4.1.3
+FROM rocker/rstudio:4.0.5
 
 LABEL \
   name=lmsbio/rstudio \
-  version=4.1.3 \
+  version=4.0.5 \
   url="https://github.com/LMSBioinformatics/rstudio_image" \
   maintainer="bioinformatics@lms.mrc.ac.uk"
 
