@@ -1,8 +1,8 @@
-FROM rocker/rstudio:4.4.2
+FROM rocker/rstudio:4.5.0
 
 LABEL \
   name=lmsbio/rstudio \
-  version=4.4.2 \
+  version=4.5.0 \
   url="https://github.com/LMSBioinformatics/rstudio_image" \
   maintainer="bioinformatics@lms.mrc.ac.uk"
 
@@ -102,8 +102,11 @@ RUN apt-get install -y --no-install-recommends \
   pkg-config \
   protobuf-compiler \
   python3-dev \
+  python3-pandas \
   python3-pip \
+  python3-sklearn \
   python3-venv \
+  python3-yaml \
   sqlite3 \
   tabix \
   tcl8.6-dev \
@@ -118,7 +121,9 @@ RUN apt-get install -y --no-install-recommends \
   libgdal-dev \
   libmysqlclient-dev
 
-RUN apt-get clean && apt-get autoremove -y && apt-get autoclean -y && rm -rf /var/lib/apt/lists/*
+RUN apt-get clean \
+  && apt-get autoremove -y \
+  && apt-get autoclean -y \
+  && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --break-system-packages scikit-learn pandas pyyaml
-RUN R --no-echo --no-restore --no-save -e "install.packages(c('devtools', 'renv', 'rmarkdown', 'tidyverse'))"
+RUN R --no-echo --no-restore --no-save -e "install.packages(c('renv', 'rmarkdown', 'tidyverse', 'svglite'))"
