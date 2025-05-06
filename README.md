@@ -6,8 +6,8 @@ with
 [`bioconductor/bioconductor_docker`](https://hub.docker.com/r/bioconductor/bioconductor_docker),
 alongside a few extras.
 
-To provide some extra initial functionality, the `renv`, `devtools`, `rmarkdown`,
-and `tidyverse` `R` packages are pre-installed.
+To provide some extra initial functionality, the `renv`, `rmarkdown`, `tidyverse`,
+and `svglite` `R` packages are pre-installed.
 
 ## Building
 
@@ -19,7 +19,7 @@ Clone and/or checkout the relevant GitHub branch and build locally using `docker
 # From an existing clone
 #   git pull --all --tags --prune
 
-BRANCH=4.4.0
+BRANCH=4.5.0
 
 git checkout $BRANCH
 docker build -t lmsbio/rstudio:$BRANCH .
@@ -32,7 +32,7 @@ Images uploaded to
 can be converted using `singularity`:
 
 ```bash
-BRANCH=4.4.0
+BRANCH=4.5.0
 
 module load singularityce
 singularity pull docker://lmsbio/rstudio:$BRANCH
@@ -40,12 +40,12 @@ singularity pull docker://lmsbio/rstudio:$BRANCH
 
 ## Updating
 
-`Dockerfile`s for updated versions of `R` should be within ew named branches.
+`Dockerfile`s for updated versions of `R` should be within new named branches.
 Updates to existing versions should be tagged appropriately.
 
 ```bash
-BRANCH=4.4.0
-TAG=$BRANCH_1.0
+BRANCH=4.5.0
+TAG="${BRANCH}_1.0"
 
 # create a new branch ...
 git checkout -b $BRANCH
